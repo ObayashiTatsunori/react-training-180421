@@ -145,3 +145,34 @@ App.js:
            </ul>
          </section>
 ```
+
+### イベントを受け取る
+
+クリックイベントを受け取り、アラートを表示してみます：
+
+App.js:
+
+```diff
+ import React, { Component } from 'react';
+ 
+ class App extends Component {
++
++  handleClick() {
++    alert('clicked!');
++  }
++
+   render() {
+     const todoList = [
+       'House keeping',
+```
+
+```diff
+         <section class="main">
+           <ul class="todo-list">
+             <li>
+-              <div class="view">{todoList[0]}</div>
++              <div class="view" onClick={this.handleClick}>{todoList[0]}</div>
+             </li>
+             <li>
+               <div class="view">{todoList[1]}</div>
+```

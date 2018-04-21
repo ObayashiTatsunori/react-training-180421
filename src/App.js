@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class App extends Component {
+
+  handleClick() {
+    alert('clicked!');
+  }
+
   render() {
     const todoList = [
       'House keeping',
@@ -17,7 +22,7 @@ class App extends Component {
         <section class="main">
           <ul class="todo-list">
             <li>
-              <div class="view">{todoList[0]}</div>
+              <div class="view" onClick={this.handleClick}>{todoList[0]}</div>
             </li>
             <li>
               <div class="view">{todoList[1]}</div>
