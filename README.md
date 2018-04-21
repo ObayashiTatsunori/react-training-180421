@@ -234,3 +234,34 @@ App.js:
            </ul>
          </section>
 ```
+
+次に、クリックによってその状態を変化させてみます：
+
+App.js:
+
+```diff
+         'Water the plants'
+       ]
+     };
++
++    this.handleClick = this.handleClick.bind(this);
+   }
+ 
+   handleClick() {
+-    alert('clicked!');
++    const { todoList } = this.state;
++
++    todoList[0] += ' (DONE)';
++
++    this.setState({
++      todoList
++    });
+   }
+ 
+   render() {
+```
+
+ここでの React 的に重要なポイントは、`setState()` メソッドを使うところです。  
+コンポーネントの状態は、`setState()` メソッドによってのみ変化します。
+
+JavaScript 的につまずきやすいポイントは、`bind()` メソッドによる `this` の束縛です。

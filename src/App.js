@@ -12,10 +12,18 @@ class App extends Component {
         'Water the plants'
       ]
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
-    alert('clicked!');
+    const { todoList } = this.state;
+
+    todoList[0] += ' (DONE)';
+
+    this.setState({
+      todoList
+    });
   }
 
   render() {
