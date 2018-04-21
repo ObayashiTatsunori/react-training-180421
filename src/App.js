@@ -14,8 +14,19 @@ class App extends Component {
       newTodo: ''
     };
 
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const { todoList, newTodo } = this.state;
+
+    this.setState({
+      todoList: todoList.concat([newTodo])
+    });
   }
 
   handleChange(event) {
@@ -39,7 +50,9 @@ class App extends Component {
       <section className="todoapp">
         <header className="header">
           <h1>todos</h1>
-          <input type="text" placeholder="new todo" onChange={this.handleChange} value={this.state.newTodo} />
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" placeholder="new todo" onChange={this.handleChange} value={this.state.newTodo} />
+          </form>
         </header>
         <section className="main">
           <ul className="todo-list">
