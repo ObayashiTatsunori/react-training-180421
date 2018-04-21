@@ -309,3 +309,34 @@ App.js:
 クリックイベントを受け取ったときと同様、`setState()` メソッドを使います。  
 「コンポーネントの状態は、`setState()` メソッドによって **のみ** 変化します」と述べましたが、テキストボックスに関しては、そのことが如実に現れます。  
 `setState()` メソッドの呼び出しをコメントアウトすると実感できます。
+
+### アイテムを追加する
+
+テキストボックスの内容を、新たな TODO として追加できるようにします。
+
+まず、アイテムが増えたときにリストが増えるよう、リストを可変にします：
+
+App.js:
+
+```diff
+         </header>
+         <section className="main">
+           <ul className="todo-list">
+-            <li>
+-              <div className="view" onClick={this.handleClick}>{this.state.todoList[0]}</div>
+-            </li>
+-            <li>
+-              <div className="view">{this.state.todoList[1]}</div>
+-            </li>
+-            <li>
+-              <div className="view">{this.state.todoList[2]}</div>
+-            </li>
++            {this.state.todoList.map((item, index) => (
++              <li key={index}>
++                <div className="view" onClick={this.handleClick}>{item}</div>
++              </li>
++            ))}
+           </ul>
+         </section>
+       </section>
+```

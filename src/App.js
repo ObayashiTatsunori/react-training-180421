@@ -43,15 +43,11 @@ class App extends Component {
         </header>
         <section className="main">
           <ul className="todo-list">
-            <li>
-              <div className="view" onClick={this.handleClick}>{this.state.todoList[0]}</div>
-            </li>
-            <li>
-              <div className="view">{this.state.todoList[1]}</div>
-            </li>
-            <li>
-              <div className="view">{this.state.todoList[2]}</div>
-            </li>
+            {this.state.todoList.map((item, index) => (
+              <li key={index}>
+                <div className="view" onClick={this.handleClick}>{item}</div>
+              </li>
+            ))}
           </ul>
         </section>
       </section>
