@@ -265,3 +265,47 @@ App.js:
 コンポーネントの状態は、`setState()` メソッドによってのみ変化します。
 
 JavaScript 的につまずきやすいポイントは、`bind()` メソッドによる `this` の束縛です。
+
+### テキストボックスへの入力を受け取る
+
+テキストボックスへの入力を状態として持ってみます：
+
+App.js:
+
+```diff
+         'House keeping',
+         'Answer the survey',
+         'Water the plants'
+-      ]
++      ],
++      newTodo: ''
+     };
+ 
++    this.handleChange = this.handleChange.bind(this);
+     this.handleClick = this.handleClick.bind(this);
+   }
+ 
++  handleChange(event) {
++    this.setState({
++      newTodo: event.target.value
++    });
++  }
++
+   handleClick() {
+     const { todoList } = this.state;
+```
+
+```diff
+       <section className="todoapp">
+         <header className="header">
+           <h1>todos</h1>
+-          <input type="text" placeholder="new todo" />
++          <input type="text" placeholder="new todo" onChange={this.handleChange} value={this.state.newTodo} />
+         </header>
+         <section className="main">
+           <ul className="todo-list">
+```
+
+クリックイベントを受け取ったときと同様、`setState()` メソッドを使います。  
+「コンポーネントの状態は、`setState()` メソッドによって **のみ** 変化します」と述べましたが、テキストボックスに関しては、そのことが如実に現れます。  
+`setState()` メソッドの呼び出しをコメントアウトすると実感できます。
