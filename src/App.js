@@ -2,17 +2,23 @@ import React, { Component } from 'react';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      todoList: [
+        'House keeping',
+        'Answer the survey',
+        'Water the plants'
+      ]
+    };
+  }
+
   handleClick() {
     alert('clicked!');
   }
 
   render() {
-    const todoList = [
-      'House keeping',
-      'Answer the survey',
-      'Water the plants'
-    ];
-
     return (
       <section class="todoapp">
         <header class="header">
@@ -22,13 +28,13 @@ class App extends Component {
         <section class="main">
           <ul class="todo-list">
             <li>
-              <div class="view" onClick={this.handleClick}>{todoList[0]}</div>
+              <div class="view" onClick={this.handleClick}>{this.state.todoList[0]}</div>
             </li>
             <li>
-              <div class="view">{todoList[1]}</div>
+              <div class="view">{this.state.todoList[1]}</div>
             </li>
             <li>
-              <div class="view">{todoList[2]}</div>
+              <div class="view">{this.state.todoList[2]}</div>
             </li>
           </ul>
         </section>
