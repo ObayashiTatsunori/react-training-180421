@@ -28,21 +28,21 @@ class App extends Component {
 
   render() {
     return (
-      <section class="todoapp">
-        <header class="header">
+      <section className="todoapp">
+        <header className="header">
           <h1>todos</h1>
           <input type="text" placeholder="new todo" />
         </header>
-        <section class="main">
-          <ul class="todo-list">
+        <section className="main">
+          <ul className="todo-list">
             <li>
-              <div class="view" onClick={this.handleClick}>{this.state.todoList[0]}</div>
+              <div className="view" onClick={this.handleClick}>{this.state.todoList[0]}</div>
             </li>
             <li>
-              <div class="view">{this.state.todoList[1]}</div>
+              <div className="view">{this.state.todoList[1]}</div>
             </li>
             <li>
-              <div class="view">{this.state.todoList[2]}</div>
+              <div className="view">{this.state.todoList[2]}</div>
             </li>
           </ul>
         </section>

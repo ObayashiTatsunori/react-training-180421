@@ -70,21 +70,21 @@ App.js:
 -          To get started, edit <code>src/App.js</code> and save to reload.
 -        </p>
 -      </div>
-+      <section class="todoapp">
-+        <header class="header">
++      <section className="todoapp">
++        <header className="header">
 +          <h1>todos</h1>
 +          <input type="text" placeholder="new todo" />
 +        </header>
-+        <section class="main">
-+          <ul class="todo-list">
++        <section className="main">
++          <ul className="todo-list">
 +            <li>
-+              <div class="view">todo 1</div>
++              <div className="view">todo 1</div>
 +            </li>
 +            <li>
-+              <div class="view">todo 2</div>
++              <div className="view">todo 2</div>
 +            </li>
 +            <li>
-+              <div class="view">todo 3</div>
++              <div className="view">todo 3</div>
 +            </li>
 +          </ul>
 +        </section>
@@ -123,24 +123,24 @@ App.js:
 +    ];
 +
      return (
-       <section class="todoapp">
-         <header class="header">
+       <section className="todoapp">
+         <header className="header">
 ```
 
 ```diff
-         <section class="main">
-           <ul class="todo-list">
+         <section className="main">
+           <ul className="todo-list">
              <li>
--              <div class="view">todo 1</div>
-+              <div class="view">{todoList[0]}</div>
+-              <div className="view">todo 1</div>
++              <div className="view">{todoList[0]}</div>
              </li>
              <li>
--              <div class="view">todo 2</div>
-+              <div class="view">{todoList[1]}</div>
+-              <div className="view">todo 2</div>
++              <div className="view">{todoList[1]}</div>
              </li>
              <li>
--              <div class="view">todo 3</div>
-+              <div class="view">{todoList[2]}</div>
+-              <div className="view">todo 3</div>
++              <div className="view">{todoList[2]}</div>
              </li>
            </ul>
          </section>
@@ -167,14 +167,14 @@ App.js:
 ```
 
 ```diff
-         <section class="main">
-           <ul class="todo-list">
+         <section className="main">
+           <ul className="todo-list">
              <li>
--              <div class="view">{todoList[0]}</div>
-+              <div class="view" onClick={this.handleClick}>{todoList[0]}</div>
+-              <div className="view">{todoList[0]}</div>
++              <div className="view" onClick={this.handleClick}>{todoList[0]}</div>
              </li>
              <li>
-               <div class="view">{todoList[1]}</div>
+               <div className="view">{todoList[1]}</div>
 ```
 
 ### コンポーネントの状態を変化させる
@@ -212,24 +212,24 @@ App.js:
 -    ];
 -
      return (
-       <section class="todoapp">
-         <header class="header">
+       <section className="todoapp">
+         <header className="header">
 ```
 
 ```diff
-         <section class="main">
-           <ul class="todo-list">
+         <section className="main">
+           <ul className="todo-list">
              <li>
--              <div class="view" onClick={this.handleClick}>{todoList[0]}</div>
-+              <div class="view" onClick={this.handleClick}>{this.state.todoList[0]}</div>
+-              <div className="view" onClick={this.handleClick}>{todoList[0]}</div>
++              <div className="view" onClick={this.handleClick}>{this.state.todoList[0]}</div>
              </li>
              <li>
--              <div class="view">{todoList[1]}</div>
-+              <div class="view">{this.state.todoList[1]}</div>
+-              <div className="view">{todoList[1]}</div>
++              <div className="view">{this.state.todoList[1]}</div>
              </li>
              <li>
--              <div class="view">{todoList[2]}</div>
-+              <div class="view">{this.state.todoList[2]}</div>
+-              <div className="view">{todoList[2]}</div>
++              <div className="view">{this.state.todoList[2]}</div>
              </li>
            </ul>
          </section>
