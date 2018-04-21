@@ -106,3 +106,42 @@ index.js:
  ReactDOM.render(<App />, document.getElementById('root'));
  registerServiceWorker();
 ```
+
+### 変数を表示する
+
+スクリプト内の値を HTML に反映させてみます：
+
+App.js:
+
+```diff
+ class App extends Component {
+   render() {
++    const todoList = [
++      'House keeping',
++      'Answer the survey',
++      'Water the plants'
++    ];
++
+     return (
+       <section class="todoapp">
+         <header class="header">
+```
+
+```diff
+         <section class="main">
+           <ul class="todo-list">
+             <li>
+-              <div class="view">todo 1</div>
++              <div class="view">{todoList[0]}</div>
+             </li>
+             <li>
+-              <div class="view">todo 2</div>
++              <div class="view">{todoList[1]}</div>
+             </li>
+             <li>
+-              <div class="view">todo 3</div>
++              <div class="view">{todoList[2]}</div>
+             </li>
+           </ul>
+         </section>
+```

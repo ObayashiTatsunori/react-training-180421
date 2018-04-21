@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 
 class App extends Component {
   render() {
+    const todoList = [
+      'House keeping',
+      'Answer the survey',
+      'Water the plants'
+    ];
+
     return (
       <section class="todoapp">
         <header class="header">
@@ -11,13 +17,13 @@ class App extends Component {
         <section class="main">
           <ul class="todo-list">
             <li>
-              <div class="view">todo 1</div>
+              <div class="view">{todoList[0]}</div>
             </li>
             <li>
-              <div class="view">todo 2</div>
+              <div class="view">{todoList[1]}</div>
             </li>
             <li>
-              <div class="view">todo 3</div>
+              <div class="view">{todoList[2]}</div>
             </li>
           </ul>
         </section>
