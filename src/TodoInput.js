@@ -10,6 +10,7 @@ class TodoInput extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -18,9 +19,16 @@ class TodoInput extends React.Component {
     });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const { newTodo } = this.state;
+    this.props.onSubmit(newTodo);
+  }
+
   render() {
     return (
-      <form onSubmit={this.props.onSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <input type="text" placeholder="new todo" onChange={this.handleChange} value={this.state.newTodo} />
       </form>
     );

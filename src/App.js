@@ -19,10 +19,8 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-
-    const { todoList, newTodo } = this.state;
+  handleSubmit(newTodo) {
+    const { todoList } = this.state;
 
     this.setState({
       todoList: todoList.concat([newTodo])

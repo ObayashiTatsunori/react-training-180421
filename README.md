@@ -609,5 +609,51 @@ TodoList.js:
 
 最後に、テキストボックス内の内容がリストに反映されるよう修正します：
 
+App.js:
+
 ```diff
+     this.handleClick = this.handleClick.bind(this);
+   }
+ 
+-  handleSubmit(event) {
+-    event.preventDefault();
+-
+-    const { todoList, newTodo } = this.state;
++  handleSubmit(newTodo) {
++    const { todoList } = this.state;
+ 
+     this.setState({
+       todoList: todoList.concat([newTodo])
+```
+
+TodoInput.js:
+
+```diff
+     };
+ 
+     this.handleChange = this.handleChange.bind(this);
++    this.handleSubmit = this.handleSubmit.bind(this);
+   }
+ 
+   handleChange(event) {
+```
+
+```diff
+     });
+   }
+ 
++  handleSubmit(event) {
++    event.preventDefault();
++
++    const { newTodo } = this.state;
++    this.props.onSubmit(newTodo);
++  }
++
+   render() {
+     return (
+-      <form onSubmit={this.props.onSubmit}>
++      <form onSubmit={this.handleSubmit}>
+         <input type="text" placeholder="new todo" onChange={this.handleChange} value={this.state.newTodo} />
+       </form>
+     );
 ```
