@@ -657,3 +657,40 @@ TodoInput.js:
        </form>
      );
 ```
+
+## Question: DONE が適切な位置に追加されるよう修正
+
+<details>
+<summary>解答</summary>
+
+App.js:
+
+```diff
+     });
+   }
+ 
+-  handleClick() {
++  handleClick(index) {
+     const { todoList } = this.state;
+ 
+-    todoList[0] += ' (DONE)';
++    todoList[index] += ' (DONE)';
+ 
+     this.setState({
+       todoList
+```
+
+TodoList.js:
+
+```diff
+       <ul className="todo-list">
+         {this.props.list.map((item, index) => (
+           <li key={index}>
+-            <div className="view" onClick={this.props.onClick}>{item}</div>
++            <div className="view" onClick={() => this.props.onClick(index)}>{item}</div>
+           </li>
+         ))}
+       </ul>
+```
+
+</details>

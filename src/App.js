@@ -27,10 +27,10 @@ class App extends Component {
     });
   }
 
-  handleClick() {
+  handleClick(index) {
     const { todoList } = this.state;
 
-    todoList[0] += ' (DONE)';
+    todoList[index] += ' (DONE)';
 
     this.setState({
       todoList
