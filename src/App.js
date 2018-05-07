@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TodoList from './TodoList';
 
 class App extends Component {
 
@@ -55,13 +56,7 @@ class App extends Component {
           </form>
         </header>
         <section className="main">
-          <ul className="todo-list">
-            {this.state.todoList.map((item, index) => (
-              <li key={index}>
-                <div className="view" onClick={this.handleClick}>{item}</div>
-              </li>
-            ))}
-          </ul>
+          <TodoList list={this.state.todoList} onClick={this.handleClick} />
         </section>
       </section>
     );

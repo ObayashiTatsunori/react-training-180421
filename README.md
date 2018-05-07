@@ -381,3 +381,82 @@ App.js:
          <section className="main">
            <ul className="todo-list">
 ```
+
+### Option: DONE が適切な位置に追加されるよう修正
+
+割愛
+
+### Option: リストをストレージに保存する
+
+割愛
+
+
+## TODO アプリリファクタリング
+
+### TodoList コンポーネントの作成
+
+ここまでは `App` コンポーネントに全ての処理を書いていました。
+このアプリの規模ではそれで十分です。
+しかし、より高度なアプリを（メンテナンス可能なように）作るには、部品化が欠かせません。
+
+TodoList コンポーネントを導入し、部品化を体験してみます。
+
+まず、リスト部分を置き換えます：
+
+```diff
+ src/
+ ├── App.js
+ ├── App.test.js
+ ├── index.js
+ ├── registerServiceWorker.js
++└── TodoList.js
+```
+
+App.js:
+
+```diff
+ import React, { Component } from 'react';
++import TodoList from './TodoList';
+ 
+ class App extends Component {
+```
+
+```diff
+           </form>
+         </header>
+         <section className="main">
+-          <ul className="todo-list">
+-            {this.state.todoList.map((item, index) => (
+-              <li key={index}>
+-                <div className="view" onClick={this.handleClick}>{item}</div>
+-              </li>
+-            ))}
+-          </ul>
++          <TodoList list={this.state.todoList} onClick={this.handleClick} />
+         </section>
+       </section>
+     );
+```
+
+TodoList.js:
+
+```diff
++import React from 'react';
++
++class TodoList extends React.Component {
++
++  render() {
++    return (
++      <ul className="todo-list">
++        {this.state.todoList.map((item, index) => (
++          <li key={index}>
++            <div className="view" onClick={this.handleClick}>{item}</div>
++          </li>
++        ))}
++      </ul>
++    );
++  }
++}
++
++export default TodoList;
+```
