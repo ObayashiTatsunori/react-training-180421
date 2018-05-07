@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoList from './TodoList';
+import TodoInput from './TodoInput';
 
 class App extends Component {
 
@@ -12,11 +13,9 @@ class App extends Component {
         'Answer the survey',
         'Water the plants'
       ],
-      newTodo: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -27,12 +26,6 @@ class App extends Component {
 
     this.setState({
       todoList: todoList.concat([newTodo])
-    });
-  }
-
-  handleChange(event) {
-    this.setState({
-      newTodo: event.target.value
     });
   }
 
@@ -51,9 +44,7 @@ class App extends Component {
       <section className="todoapp">
         <header className="header">
           <h1>todos</h1>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" placeholder="new todo" onChange={this.handleChange} value={this.state.newTodo} />
-          </form>
+          <TodoInput onSubmit={this.handleSubmit} />
         </header>
         <section className="main">
           <TodoList list={this.state.todoList} onClick={this.handleClick} />

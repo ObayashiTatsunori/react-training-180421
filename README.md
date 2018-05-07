@@ -463,6 +463,8 @@ TodoList.js:
 
 次に、エラーを解消します：
 
+TodoList.js:
+
 ```diff
    render() {
      return (
@@ -479,3 +481,101 @@ TodoList.js:
 
 ここでの React 的に重要なポイントは、`props` プロパティーと、イベントハンドラーの受け渡しです。  
 `props.list` のようにデータを渡すことができ、`props.onClick` のようにイベント発生時の振る舞い自体も渡すことができます。
+
+### TodoInput コンポーネントの作成
+
+同様に、入力コンポーネントも外部に切り出します：
+
+```diff
+ src/
+ ├── App.js
+ ├── App.test.js
+ ├── index.js
+ ├── registerServiceWorker.js
++├── TodoInput.js
+ └── TodoList.js
+```
+
+App.js:
+
+```diff
+ import React, { Component } from 'react';
+ import TodoList from './TodoList';
++import TodoInput from './TodoInput';
+ 
+ class App extends Component {
+```
+
+```diff
+         'Answer the survey',
+         'Water the plants'
+       ],
+-      newTodo: ''
+     };
+ 
+     this.handleSubmit = this.handleSubmit.bind(this);
+-    this.handleChange = this.handleChange.bind(this);
+     this.handleClick = this.handleClick.bind(this);
+   }
+```
+
+```diff
+     });
+   }
+ 
+-  handleChange(event) {
+-    this.setState({
+-      newTodo: event.target.value
+-    });
+-  }
+-
+   handleClick() {
+     const { todoList } = this.state;
+```
+
+```diff
+       <section className="todoapp">
+         <header className="header">
+           <h1>todos</h1>
+-          <form onSubmit={this.handleSubmit}>
+-            <input type="text" placeholder="new todo" onChange={this.handleChange} value={this.state.newTodo} />
+-          </form>
++          <TodoInput onSubmit={this.handleSubmit} />
+         </header>
+         <section className="main">
+           <TodoList list={this.state.todoList} onClick={this.handleClick} />
+```
+
+TodoInput.js:
+
+```diff
++import React from 'react';
++
++class TodoInput extends React.Component {
++
++  handleChange(event) {
++    this.setState({
++      newTodo: event.target.value
++    });
++  }
++
++  render() {
++    return (
++      <form onSubmit={this.handleSubmit}>
++        <input type="text" placeholder="new todo" onChange={this.handleChange} value={this.state.newTodo} />
++      </form>
++    );
++  }
++}
++
++export default TodoInput;
+```
+
+この時点ではまだエラーが残ります。
+
+次に、エラーを解消します：
+
+TodoList.js:
+
+```diff
+```
