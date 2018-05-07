@@ -395,13 +395,13 @@ App.js:
 
 ### TodoList コンポーネントの作成
 
-ここまでは `App` コンポーネントに全ての処理を書いていました。
-このアプリの規模ではそれで十分です。
+ここまでは `App` コンポーネントに全ての処理を書いていました。  
+このアプリの規模ではそれで十分です。  
 しかし、より高度なアプリを（メンテナンス可能なように）作るには、部品化が欠かせません。
 
 TodoList コンポーネントを導入し、部品化を体験してみます。
 
-まず、リスト部分を置き換えます：
+まず、リスト部分をそのまま外部ファイルに移します。この段階ではエラーが出ます：
 
 ```diff
  src/
@@ -460,3 +460,22 @@ TodoList.js:
 +
 +export default TodoList;
 ```
+
+次に、エラーを解消します：
+
+```diff
+   render() {
+     return (
+       <ul className="todo-list">
+-        {this.state.todoList.map((item, index) => (
++        {this.props.list.map((item, index) => (
+           <li key={index}>
+-            <div className="view" onClick={this.handleClick}>{item}</div>
++            <div className="view" onClick={this.props.onClick}>{item}</div>
+           </li>
+         ))}
+       </ul>
+```
+
+ここでの React 的に重要なポイントは、`props` プロパティーと、イベントハンドラーの受け渡しです。  
+`props.list` のようにデータを渡すことができ、`props.onClick` のようにイベント発生時の振る舞い自体も渡すことができます。

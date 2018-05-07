@@ -5,9 +5,9 @@ class TodoList extends React.Component {
   render() {
     return (
       <ul className="todo-list">
-        {this.state.todoList.map((item, index) => (
+        {this.props.list.map((item, index) => (
           <li key={index}>
-            <div className="view" onClick={this.handleClick}>{item}</div>
+            <div className="view" onClick={this.props.onClick}>{item}</div>
           </li>
         ))}
       </ul>
