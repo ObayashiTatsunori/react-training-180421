@@ -401,7 +401,8 @@ App.js:
 
 TodoList コンポーネントを導入し、部品化を体験してみます。
 
-まず、リスト部分をそのまま外部ファイルに移します。この段階ではエラーが出ます：
+まず、リスト部分をそのまま外部ファイルに移します。  
+この段階ではまだ、`Uncaught TypeError: Cannot read property 'todoList' of null` というランタイムエラーが出ます：
 
 ```diff
  src/
@@ -571,7 +572,8 @@ TodoInput.js:
 +export default TodoInput;
 ```
 
-この時点ではまだエラーが残ります。
+この時点ではまだエラーが残ります。  
+`Uncaught TypeError: Cannot read property 'newTodo' of null` というランタイムエラーです。
 
 次に、エラーを解消します：
 
