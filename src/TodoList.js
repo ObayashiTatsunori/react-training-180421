@@ -1,4 +1,5 @@
 import React from 'react';
+import './TodoList.css';
 
 class TodoList extends React.Component {
 
@@ -6,8 +7,8 @@ class TodoList extends React.Component {
     return (
       <ul className="todo-list">
         {this.props.list.map((item, index) => (
-          <li key={index}>
-            <div className="view" onClick={() => this.props.onClick(index)}>{item}</div>
+          <li key={index} className={item.completed ? 'completed' : ''}>
+            <div className="view" onClick={() => this.props.onClick(index)}>{item.title}</div>
           </li>
         ))}
       </ul>

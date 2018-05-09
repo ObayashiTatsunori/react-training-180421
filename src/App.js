@@ -9,9 +9,9 @@ class App extends Component {
 
     this.state = {
       todoList: [
-        'House keeping',
-        'Answer the survey',
-        'Water the plants'
+        { title: 'House keeping', completed: false },
+        { title: 'Answer the survey', completed: false },
+        { title: 'Water the plants', completed: false },
       ],
     };
 
@@ -23,14 +23,17 @@ class App extends Component {
     const { todoList } = this.state;
 
     this.setState({
-      todoList: todoList.concat([newTodo])
+      todoList: todoList.concat([{
+        title: newTodo,
+        completed: false,
+      }])
     });
   }
 
   handleClick(index) {
     const { todoList } = this.state;
 
-    todoList[index] += ' (DONE)';
+    todoList[index].completed = !todoList[index].completed;
 
     this.setState({
       todoList

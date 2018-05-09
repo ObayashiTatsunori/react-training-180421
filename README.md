@@ -696,3 +696,91 @@ TodoList.js:
 ```
 
 </details>
+
+## Option: 完了状態をスタイルで表現する
+
+<details>
+
+クリックしたときにスタイルが変わるようにします。  
+インラインスタイルでもよいですが、CSS ファイルを作って実現してみます：
+
+```diff
+ src/
+ ├── App.js
+ ├── App.test.js
+ ├── index.js
+ ├── registerServiceWorker.js
+ ├── TodoInput.js
++├── TodoList.css
+ └── TodoList.js
+```
+
+TodoList.css:
+
+```diff
++.completed {
++  color: #d9d9d9;
++  text-decoration: line-through;
++}
+```
+
+TodoList.js:
+
+```diff
+ import React from 'react';
++import './TodoList.css';
+ 
+ class TodoList extends React.Component {
+```
+
+```diff
+     return (
+       <ul className="todo-list">
+         {this.props.list.map((item, index) => (
+-          <li key={index}>
+-            <div className="view" onClick={() => this.props.onClick(index)}>{item}</div>
++          <li key={index} className={item.completed ? 'completed' : ''}>
++            <div className="view" onClick={() => this.props.onClick(index)}>{item.title}</div>
+           </li>
+         ))}
+       </ul>
+```
+
+App.js:
+
+```diff
+     this.state = {
+       todoList: [
+-        'House keeping',
+-        'Answer the survey',
+-        'Water the plants'
++        { title: 'House keeping', completed: false },
++        { title: 'Answer the survey', completed: false },
++        { title: 'Water the plants', completed: false },
+       ],
+     };
+```
+
+```diff
+     const { todoList } = this.state;
+ 
+     this.setState({
+-      todoList: todoList.concat([newTodo])
++      todoList: todoList.concat([{
++        title: newTodo,
++        completed: false,
++      }])
+     });
+   }
+ 
+   handleClick(index) {
+     const { todoList } = this.state;
+ 
+-    todoList[index] += ' (DONE)';
++    todoList[index].completed = !todoList[index].completed;
+ 
+     this.setState({
+       todoList
+```
+
+</details>
